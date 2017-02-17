@@ -1,4 +1,9 @@
 import operator
+import requests
+import json
+
+url = "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=%s&p=%s"
+
 with open('megadeth_setlists.txt') as f:
 	lines = f.readlines()
 dict = {}
