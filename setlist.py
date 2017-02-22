@@ -2,12 +2,36 @@ import operator
 import urllib2
 import json
 import sys
+import urllib
 
+OPTION_START_DATE = '-s'
+OPTION_END_DATE = '-e'
+
+artist_name = ''
+start_date = ''
+end_date = ''
+
+# parsing command line arguments
+i = 1
+while i < len(sys.argv):
+        arg = sys.argv[i]
+        if (arg == OPTION_START_DATE):
+		i = i + 1
+                start_date = sys.argv[i]
+                print "starting date %s"%start_date
+        elif (arg == OPTION_END_DATE):
+                i = i + 1
+		end_date = sys.argv[i]
+                print "end date %s"%end_date
+        else:
+                artist_name = artist_name + ' ' + arg
+	i = i + 1
+artist_name = artist_name.strip()
+artist_name_enc = urllib.quote_plus(artist_name)
 url = "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=%s&p=%d"
-artist_name = sys.argv[1]
 print artist_name
 page = 1
-response_str = urllib2.urlopen(url%(artist_name,page)).read()
+response_str = urllib2.urlopen(url%(artist_name_enc,page)).read()
 # Loading the response data into a dict variable
 # json.loads takes in only binary or string variables so using content to fetch binary content
 # Loads (Load String) takes a Json file and converts into python data structure (dict or list, depending on JSON)
@@ -21,7 +45,7 @@ page+=1
 #remove this line after debug
 #tot_pages = 11
 while (page<tot_pages):
-	response_str = urllib2.urlopen(url%(artist_name,page)).read()
+	response_str = urllib2.urlopen(url%(artist_name_enc,page)).read()
 	jData = json.loads(response_str)
 	setlists2 = jData['setlists']
 	setlist.extend(setlists2['setlist'])
