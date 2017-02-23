@@ -4,6 +4,27 @@ import json
 import sys
 import urllib
 
+# Print iterations progress
+def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1,length = 100, fill = '.'):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+    """
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length - filledLength)
+    print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), '\r')
+    # Print New Line on Complete
+    if iteration == total: 
+        print()
+
 OPTION_START_DATE = '-s'
 OPTION_END_DATE = '-e'
 
@@ -45,13 +66,17 @@ setlist = setlists['setlist']
 page+=1
 #remove this line after debug
 #tot_pages = 11
+# Initial call to print 0% progress
+printProgressBar(page, tot_pages, prefix = "Progress:", suffix = "Complete", length = 50)
 while (page<tot_pages):
     response_str = urllib2.urlopen(url%(artist_name_enc,page)).read()
     #print url%(artist_name_enc,page)
     jData = json.loads(response_str)
     setlists2 = jData['setlists']
     setlist.extend(setlists2['setlist'])
-    print(page)
+    # printing the progress
+    #print('.')
+    printProgressBar(page, tot_pages, prefix = "Progress:", suffix = "Complete", length = 50)
     page+=1
 
 with open("data_%s.txt"%artist_name, 'w') as outfile:

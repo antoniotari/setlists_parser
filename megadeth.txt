@@ -494,10 +494,6 @@ Shadow of Deth
 Prince of Darkness
 Hangar 18
 The Threat Is Real
-Trust
-She-Wolf
-A Tout Le Monde
-Symphony of Destruction
 Prince of Darkness
 Hangar 18
 The Threat Is Real
@@ -522,6 +518,10 @@ Holy Wars... The Punishment Due
 Silent Scorn
 My Way
 Shadow of Deth
+Trust
+She-Wolf
+A Tout Le Monde
+Symphony of Destruction
 Prince of Darkness
 Hangar 18
 The Threat Is Real
