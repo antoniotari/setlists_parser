@@ -1,0 +1,41 @@
+promises : 1
+time: the beginning / use the man : 1
+paranoid : 1
+peace sells / anarchy in the u.k. / paranoid : 1
+dont worry be happy : 1
+trust / wake up dead / tornado of souls : 1
+anarchy in the u.k. : 1
+peace sells / paranoid / anarchy in the u.k. : 2
+peace sells / anarchy in the u.k. : 3
+breadline : 3
+burning bridges : 6
+peace sells / paranoid : 7
+almost honest : 7
+shut up, be happy : 8
+the conjuring : 10
+prince of darkness : 11
+crush 'em : 11
+peace sells : 12
+devil's island : 12
+tornado of souls : 13
+hook in mouth : 13
+reckoning day : 14
+mechanix : 14
+1000 times goodbye : 15
+angry again : 15
+train of consequences : 16
+ashes in your mouth : 17
+she-wolf : 18
+return to hangar : 18
+moto psycho : 18
+a tout le monde : 20
+silent scorn : 21
+in my darkest hour : 22
+wake up dead : 23
+trust : 24
+symphony of destruction : 24
+kill the king : 24
+sweating bullets : 25
+dread and the fugitive mind : 25
+hangar 18 : 25
+holy wars... the punishment due : 25

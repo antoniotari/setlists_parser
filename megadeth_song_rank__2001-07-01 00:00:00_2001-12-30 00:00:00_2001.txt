@@ -1,0 +1,47 @@
+paranoid : 1
+dont worry be happy : 1
+trust / wake up dead / tornado of souls : 1
+drum solo : 1
+peace sells / tornado of souls : 1
+foreclosure of a dream : 1
+anarchy in the u.k. : 1
+peace sells / anarchy in the u.k. / paranoid : 2
+guitar solo : 2
+use the man : 3
+peace sells / paranoid / anarchy in the u.k. : 3
+peace sells / anarchy in the u.k. : 3
+the boys are back in town : 4
+breadline : 4
+time: the beginning / use the man : 6
+shut up, be happy : 8
+promises : 11
+peace sells / paranoid : 12
+burning bridges : 14
+almost honest : 19
+the conjuring : 20
+crush 'em : 20
+devil's island : 23
+ashes in your mouth : 24
+hook in mouth : 25
+mechanix : 29
+train of consequences : 31
+peace sells : 33
+1000 times goodbye : 33
+prince of darkness : 33
+reckoning day : 34
+angry again : 34
+a tout le monde : 37
+tornado of souls : 37
+return to hangar : 41
+she-wolf : 42
+silent scorn : 42
+moto psycho : 43
+in my darkest hour : 49
+wake up dead : 50
+hangar 18 : 50
+kill the king : 51
+trust : 52
+sweating bullets : 52
+holy wars... the punishment due : 52
+dread and the fugitive mind : 53
+symphony of destruction : 54
