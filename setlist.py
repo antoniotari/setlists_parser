@@ -20,13 +20,16 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1,l
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
     filledLength = int(length * iteration // total)
     bar = fill * filledLength + '-' * (length - filledLength)
-    print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), '\r')
+    sys.stdout.write("\033[F")
+    print("\r%s |%s| %s%% %s\r" % (prefix, bar, percent, suffix))
     # Print New Line on Complete
     if iteration == total: 
         print()
 
 OPTION_START_DATE = '-s'
 OPTION_END_DATE = '-e'
+
+API_KEY = '1379c35f-1a6f-4d52-be50-24b865760a22'
 
 artist_name = ''
 start_date = ''
@@ -50,17 +53,25 @@ while i < len(sys.argv):
 
 artist_name = artist_name.strip()
 artist_name_enc = urllib.quote_plus(artist_name)
-url = "http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=%s&p=%d"
+url = "https://api.setlist.fm/rest/1.0/search/setlists?artistName=%s&p=%d"
 print artist_name
 page = 1
-response_str = urllib2.urlopen(url%(artist_name_enc,page)).read()
+
+def make_request():
+	request = urllib2.Request(url%(artist_name_enc, page))
+	request.add_header('x-api-key' , API_KEY)
+	request.add_header('Accept' , 'application/json')
+	response_str = urllib2.urlopen(request).read()
+	return json.loads(response_str)
+
+
 # Loading the response data into a dict variable
 # json.loads takes in only binary or string variables so using content to fetch binary content
 # Loads (Load String) takes a Json file and converts into python data structure (dict or list, depending on JSON)
-jData = json.loads(response_str)
-setlists = jData['setlists']
-itemsPerPage = setlists['@itemsPerPage']
-total = setlists['@total']
+jData = make_request() #json.loads(response_str)
+setlists = jData
+itemsPerPage = setlists['itemsPerPage']
+total = setlists['total']
 tot_pages = int(total) / int(itemsPerPage)
 setlist = setlists['setlist']
 page+=1
@@ -69,10 +80,10 @@ page+=1
 # Initial call to print 0% progress
 printProgressBar(page, tot_pages, prefix = "Progress:", suffix = "Complete", length = 50)
 while (page<tot_pages):
-    response_str = urllib2.urlopen(url%(artist_name_enc,page)).read()
+    #response_str = urllib2.urlopen(url%(artist_name_enc,page)).read()
     #print url%(artist_name_enc,page)
-    jData = json.loads(response_str)
-    setlists2 = jData['setlists']
+    jData = make_request() #json.loads(response_str)
+    setlists2 = jData #['setlists']
     setlist.extend(setlists2['setlist'])
     # printing the progress
     #print('.')
@@ -92,19 +103,19 @@ def parse_set_list(sets):
             if (type(songs) is list):
                 for song in songs:
                     song_count+=1
-                    song_list.append(song['@name'])
+                    song_list.append(song['name'])
             else:
                 song_count+=1
-                song_list.append(songs['@name'])
+                song_list.append(songs['@nme'])
     else:
         songs = sets['song']
         if (type(songs) is list):
             for song in songs:
                 song_count+=1
-                song_list.append(song['@name'])
+                song_list.append(song['name'])
         else:
             song_count+=1
-            song_list.append(songs['@name'])
+            song_list.append(songs['name'])
     print(song_count)
 
 for item in setlist:
