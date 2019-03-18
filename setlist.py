@@ -21,6 +21,9 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1,l
         length      - Optional  : character length of bar (Int)
         fill        - Optional  : bar fill character (Str)
     """
+    if (total == 0): 
+        return
+
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
     filledLength = int(length * iteration // total)
     bar = fill * filledLength + '-' * (length - filledLength)
@@ -74,7 +77,7 @@ url = "https://api.setlist.fm/rest/1.0/search/setlists?artistName=%s&p=%d"
 if (year != None):
 	url = url + "&year=%s"%year
 
-print "artist name: %s\n"%artist_name
+print "\n-- artist: %s --\n\n"%artist_name
 page = 1
 
 def make_request():
